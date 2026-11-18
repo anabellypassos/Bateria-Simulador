@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bateria</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%A5%81%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="topo">
+        <div>
+            <h1>Bateria</h1>
+            <p class="subtitulo">Toque com o teclado ou clicando nas peças</p>
+        </div>
+        <div class="topo-controles">
+            <label class="controle">
+                <span>Volume</span>
+                <input type="range" id="volume" min="0" max="100" value="80" />
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" id="mostrarTeclas" checked />
+                <span>Mostrar teclas</span>
+            </label>
+        </div>
+    </header>
+
+    <p id="status" class="status">Carregando sons…</p>
+
+    <main>
+        <section class="palco">
+            <svg id="kit" viewBox="0 125 1000 515" role="img" aria-label="Bateria">
+                <defs>
+                    <linearGradient id="casco" x1="0" x2="1" y1="0" y2="0">
+                        <stop offset="0" stop-color="#3d090c" />
+                        <stop offset="0.22" stop-color="#9b1f26" />
+                        <stop offset="0.48" stop-color="#e0525a" />
+                        <stop offset="0.7" stop-color="#9b1f26" />
+                        <stop offset="1" stop-color="#3d090c" />
+                    </linearGradient>
+                    <radialGradient id="pele" cx="0.5" cy="0.4" r="0.7">
+                        <stop offset="0" stop-color="#fffdf7" />
+                        <stop offset="1" stop-color="#d6ccb9" />
+                    </radialGradient>
+                    <radialGradient id="peleBumbo" cx="0.45" cy="0.4" r="0.75">
+                        <stop offset="0" stop-color="#2b2c33" />
+                        <stop offset="1" stop-color="#0b0b0e" />
+                    </radialGradient>
+                    <linearGradient id="cromo" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0" stop-color="#f5f5f5" />
+                        <stop offset="0.5" stop-color="#9c9fa6" />
+                        <stop offset="1" stop-color="#e3e4e7" />
+                    </linearGradient>
+                    <linearGradient id="ouro" x1="0" x2="1" y1="0" y2="0">
+                        <stop offset="0" stop-color="#6e5014" />
+                        <stop offset="0.25" stop-color="#e6c264" />
+                        <stop offset="0.5" stop-color="#a98226" />
+                        <stop offset="0.72" stop-color="#f4dc8c" />
+                        <stop offset="1" stop-color="#6e5014" />
+                    </linearGradient>
+                    <linearGradient id="metal" x1="0" x2="1" y1="0" y2="0">
+                        <stop offset="0" stop-color="#4b4f57" />
+                        <stop offset="0.45" stop-color="#c9ccd2" />
+                        <stop offset="1" stop-color="#4b4f57" />
+                    </linearGradient>
+                    <radialGradient id="tapete" cx="0.5" cy="0.5" r="0.5">
+                        <stop offset="0" stop-color="#5b2a2a" />
+                        <stop offset="1" stop-color="#2a1416" />
+                    </radialGradient>
+                </defs>
+
+                <!-- Tapete -->
+                <ellipse cx="500" cy="602" rx="470" ry="34" fill="url(#tapete)" />
+
+                <!-- Pedestais (ficam atrás das peças) -->
+                <g class="ferragens" stroke="#b7bac2" stroke-width="5" stroke-linecap="round" fill="none">
+                    <!-- chimbal -->
+                    <line x1="150" y1="262" x2="150" y2="565" />
+                    <line x1="150" y1="560" x2="102" y2="604" />
+                    <line x1="150" y1="560" x2="198" y2="604" />
+                    <!-- condução -->
+                    <line x1="858" y1="212" x2="858" y2="565" />
+                    <line x1="858" y1="560" x2="808" y2="604" />
+                    <line x1="858" y1="560" x2="908" y2="604" />
+                    <!-- pad -->
+                    <path d="M287 208 L287 248 L150 322" />
+                    <!-- caixa -->
+                    <line x1="290" y1="430" x2="290" y2="560" />
+                    <line x1="290" y1="555" x2="245" y2="604" />
+                    <line x1="290" y1="555" x2="335" y2="604" />
+                    <!-- suportes do tom e do cowbell -->
+                    <line x1="478" y1="300" x2="440" y2="282" />
+                    <line x1="545" y1="300" x2="588" y2="262" />
+                    <!-- pernas do surdo -->
+                    <line x1="648" y1="420" x2="632" y2="604" />
+                    <line x1="802" y1="420" x2="818" y2="604" />
+                </g>
+                <!-- pedal do chimbal -->
+                <rect x="128" y="592" width="44" height="12" rx="3" fill="url(#cromo)" />
+
+                <!-- PRATO DE CONDUÇÃO (D) -->
+                <g class="piece prato" data-peca="ride" data-key="keyd" tabindex="0" role="button" aria-label="Prato de condução (tecla D)">
+                    <title>Prato de condução — tecla D</title>
+                    <g class="anim">
+                        <g transform="rotate(-8 858 205)">
+                            <ellipse cx="858" cy="205" rx="122" ry="17" fill="url(#ouro)" stroke="#5a410f" stroke-width="1.5" />
+                            <ellipse cx="858" cy="205" rx="90" ry="12" fill="none" stroke="#fff3c4" stroke-opacity="0.35" />
+                            <ellipse cx="858" cy="205" rx="58" ry="8" fill="none" stroke="#fff3c4" stroke-opacity="0.3" />
+                            <ellipse cx="858" cy="201" rx="22" ry="8" fill="url(#ouro)" stroke="#5a410f" />
+                            <ellipse class="flash" cx="858" cy="205" rx="122" ry="17" />
+                        </g>
+                    </g>
+                </g>
+
+                <!-- CHIMBAL (E fechado / S aberto) -->
+                <g class="piece prato chimbal" data-peca="chimbal" data-key="keye" tabindex="0" role="button" aria-label="Chimbal (E fechado, S aberto)">
+                    <title>Chimbal — E fechado, S aberto</title>
+                    <g class="anim">
+                        <ellipse cx="150" cy="264" rx="84" ry="11" fill="url(#ouro)" stroke="#5a410f" stroke-width="1.5" />
+                        <g class="hh-topo">
+                            <line x1="150" y1="214" x2="150" y2="252" stroke="#b7bac2" stroke-width="4" />
+                            <ellipse cx="150" cy="252" rx="84" ry="11" fill="url(#ouro)" stroke="#5a410f" stroke-width="1.5" />
+                            <ellipse cx="150" cy="249" rx="18" ry="6" fill="url(#ouro)" stroke="#5a410f" />
+                            <ellipse class="flash" cx="150" cy="252" rx="84" ry="11" />
+                        </g>
+                    </g>
+                </g>
+
+                <!-- PAD ELETRÔNICO (W - palmas) -->
+                <g class="piece pad" data-peca="pad" data-key="keyw" tabindex="0" role="button" aria-label="Pad de palmas (tecla W)">
+                    <title>Pad (palmas) — tecla W</title>
+                    <g class="anim">
+                        <rect x="238" y="146" width="98" height="62" rx="10" fill="#1b1d24" stroke="#454b59" stroke-width="2" />
+                        <rect x="248" y="156" width="78" height="42" rx="7" fill="#2a2e39" />
+                        <rect class="led" x="248" y="200" width="78" height="3" rx="1.5" />
+                        <rect class="flash" x="248" y="156" width="78" height="42" rx="7" />
+                    </g>
+                </g>
+
+                <!-- TOM (C) -->
+                <g class="piece tambor" data-peca="tom" data-key="keyc" tabindex="0" role="button" aria-label="Tom (tecla C)">
+                    <title>Tom — tecla C</title>
+                    <g class="anim">
+                        <path d="M352 226 L352 284 A68 18 0 0 0 488 284 L488 226 Z" fill="url(#casco)" />
+                        <path d="M352 284 A68 18 0 0 0 488 284" fill="none" stroke="url(#cromo)" stroke-width="5" />
+                        <g fill="url(#cromo)">
+                            <rect x="366" y="240" width="6" height="26" rx="2" />
+                            <rect x="398" y="244" width="6" height="26" rx="2" />
+                            <rect x="436" y="244" width="6" height="26" rx="2" />
+                            <rect x="468" y="240" width="6" height="26" rx="2" />
+                        </g>
+                        <ellipse cx="420" cy="226" rx="70" ry="19" fill="url(#cromo)" />
+                        <ellipse class="pele" cx="420" cy="226" rx="64" ry="15.5" fill="url(#pele)" />
+                        <ellipse class="flash" cx="420" cy="226" rx="64" ry="15.5" />
+                    </g>
+                </g>
+
+                <!-- COWBELL (X) -->
+                <g class="piece cowbell" data-peca="cowbell" data-key="keyx" tabindex="0" role="button" aria-label="Cowbell (tecla X)">
+                    <title>Cowbell — tecla X</title>
+                    <g class="anim">
+                        <path d="M572 220 L608 220 L618 262 L562 262 Z" fill="url(#metal)" stroke="#2b2d31" stroke-width="1.5" />
+                        <ellipse cx="590" cy="262" rx="28" ry="6" fill="#1d1f23" />
+                        <path class="flash" d="M572 220 L608 220 L618 262 L562 262 Z" />
+                    </g>
+                </g>
+
+                <!-- BUMBO (A) -->
+                <g class="piece tambor bumbo" data-peca="bumbo" data-key="keya" tabindex="0" role="button" aria-label="Bumbo (tecla A)">
+                    <title>Bumbo — tecla A</title>
+                    <g class="anim">
+                        <circle cx="500" cy="440" r="156" fill="url(#casco)" />
+                        <circle cx="500" cy="440" r="148" fill="url(#peleBumbo)" stroke="url(#cromo)" stroke-width="9" />
+                        <circle cx="500" cy="440" r="118" fill="none" stroke="#c4262e" stroke-width="5" />
+                        <circle cx="500" cy="440" r="110" fill="none" stroke="#c4262e" stroke-opacity="0.35" stroke-width="2" />
+                        <text x="500" y="432" class="logo">BATERIA</text>
+                        <circle cx="560" cy="510" r="18" fill="#050506" stroke="#3b3d44" stroke-width="2" />
+                        <g fill="url(#cromo)">
+                            <circle cx="644.9" cy="478.8" r="6" /><circle cx="606.1" cy="546.1" r="6" />
+                            <circle cx="538.8" cy="584.9" r="6" /><circle cx="461.2" cy="584.9" r="6" />
+                            <circle cx="393.9" cy="546.1" r="6" /><circle cx="355.1" cy="478.8" r="6" />
+                            <circle cx="355.1" cy="401.2" r="6" /><circle cx="393.9" cy="333.9" r="6" />
+                            <circle cx="461.2" cy="295.1" r="6" /><circle cx="538.8" cy="295.1" r="6" />
+                            <circle cx="606.1" cy="333.9" r="6" /><circle cx="644.9" cy="401.2" r="6" />
+                        </g>
+                        <circle class="flash" cx="500" cy="440" r="144" />
+                    </g>
+                </g>
+                <!-- esporas e pedal do bumbo -->
+                <g stroke="#b7bac2" stroke-width="5" stroke-linecap="round">
+                    <line x1="392" y1="548" x2="356" y2="606" />
+                    <line x1="608" y1="548" x2="644" y2="606" />
+                </g>
+                <rect x="477" y="578" width="46" height="26" rx="4" fill="url(#cromo)" />
+
+                <!-- SURDO (Q) -->
+                <g class="piece tambor" data-peca="surdo" data-key="keyq" tabindex="0" role="button" aria-label="Surdo (tecla Q)">
+                    <title>Surdo — tecla Q</title>
+                    <g class="anim">
+                        <path d="M637 366 L637 474 A88 24 0 0 0 813 474 L813 366 Z" fill="url(#casco)" />
+                        <path d="M637 474 A88 24 0 0 0 813 474" fill="none" stroke="url(#cromo)" stroke-width="6" />
+                        <g fill="url(#cromo)">
+                            <rect x="653" y="388" width="7" height="34" rx="2" /><rect x="653" y="430" width="7" height="34" rx="2" />
+                            <rect x="700" y="394" width="7" height="34" rx="2" /><rect x="700" y="436" width="7" height="34" rx="2" />
+                            <rect x="745" y="394" width="7" height="34" rx="2" /><rect x="745" y="436" width="7" height="34" rx="2" />
+                            <rect x="790" y="388" width="7" height="34" rx="2" /><rect x="790" y="430" width="7" height="34" rx="2" />
+                        </g>
+                        <ellipse cx="725" cy="366" rx="90" ry="25" fill="url(#cromo)" />
+                        <ellipse class="pele" cx="725" cy="366" rx="83" ry="21" fill="url(#pele)" />
+                        <ellipse class="flash" cx="725" cy="366" rx="83" ry="21" />
+                    </g>
+                </g>
+
+                <!-- CAIXA (Z) -->
+                <g class="piece tambor" data-peca="caixa" data-key="keyz" tabindex="0" role="button" aria-label="Caixa (tecla Z)">
+                    <title>Caixa — tecla Z</title>
+                    <g class="anim">
+                        <path d="M208 390 L208 434 A82 22 0 0 0 372 434 L372 390 Z" fill="url(#metal)" />
+                        <path d="M208 434 A82 22 0 0 0 372 434" fill="none" stroke="url(#cromo)" stroke-width="5" />
+                        <g fill="#2b2d31">
+                            <rect x="224" y="400" width="6" height="30" rx="2" /><rect x="258" y="404" width="6" height="30" rx="2" />
+                            <rect x="316" y="404" width="6" height="30" rx="2" /><rect x="350" y="400" width="6" height="30" rx="2" />
+                        </g>
+                        <ellipse cx="290" cy="390" rx="84" ry="23" fill="url(#cromo)" />
+                        <ellipse class="pele" cx="290" cy="390" rx="78" ry="19.5" fill="url(#pele)" />
+                        <ellipse class="flash" cx="290" cy="390" rx="78" ry="19.5" />
+                    </g>
+                </g>
+
+                <!-- Etiquetas das teclas -->
+                <g class="badges">
+                    <g class="badge" data-key="keyd" transform="translate(858 168)"><circle r="16" /><text>D</text></g>
+                    <g class="badge" data-key="keye" transform="translate(104 222)"><circle r="16" /><text>E</text></g>
+                    <g class="badge" data-key="keys" transform="translate(196 222)"><circle r="16" /><text>S</text></g>
+                    <g class="badge" data-key="keyw" transform="translate(287 177)"><circle r="16" /><text>W</text></g>
+                    <g class="badge" data-key="keyc" transform="translate(420 262)"><circle r="16" /><text>C</text></g>
+                    <g class="badge" data-key="keyx" transform="translate(590 241)"><circle r="14" /><text>X</text></g>
+                    <g class="badge" data-key="keya" transform="translate(500 478)"><circle r="18" /><text>A</text></g>
+                    <g class="badge" data-key="keyq" transform="translate(725 428)"><circle r="16" /><text>Q</text></g>
+                    <g class="badge" data-key="keyz" transform="translate(290 420)"><circle r="16" /><text>Z</text></g>
+                </g>
+            </svg>
+        </section>
+
+        <section class="legenda" id="legenda" aria-label="Teclas"></section>
+
+        <section class="paineis">
+            <div class="painel">
+                <h2>Compositor</h2>
+                <p class="ajuda">Digite as letras das teclas. <code>-</code> é uma pausa e <code>(ae)</code> toca as peças juntas. Espaços são ignorados.</p>
+                <div class="linha">
+                    <input type="text" id="input" placeholder="Ex.: (ae)e(ze)e(ae)(ae)(ze)e" autocomplete="off" spellcheck="false" />
+                </div>
+                <div id="trilha" class="trilha" aria-live="off"></div>
+                <div class="linha controles">
+                    <label class="controle">
+                        <span>BPM <strong id="bpmValor">120</strong></span>
+                        <input type="range" id="bpm" min="50" max="220" value="120" />
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" id="loop" />
+                        <span>Repetir</span>
+                    </label>
+                </div>
+                <div class="linha">
+                    <select id="ritmos" aria-label="Ritmos prontos">
+                        <option value="">Ritmos prontos…</option>
+                    </select>
+                    <button id="btnTocar" class="primario">▶ Tocar</button>
+                    <button id="btnParar">■ Parar</button>
+                </div>
+            </div>
+
+            <div class="painel">
+                <h2>Gravação</h2>
+                <p class="ajuda">Grave o que você tocar, ouça de novo ou transforme em uma composição.</p>
+                <div class="linha">
+                    <button id="btnGravar" class="gravar">● Gravar</button>
+                    <button id="btnOuvir" disabled>▶ Ouvir</button>
+                    <button id="btnParaCompositor" disabled>Enviar ao compositor</button>
+                </div>
+                <p id="statusGravacao" class="status-gravacao">Nada gravado ainda.</p>
+                <p class="ajuda dica"><kbd>Esc</kbd> para tudo.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>Projeto base: B7Web</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
